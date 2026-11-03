@@ -90,6 +90,8 @@ def demo_draft(product: Product) -> ProductDraft:
     queries = [product.name, f"{product.manufacturer} {product.name}"]
     for key in list(product.specs)[:3]:
         queries.append(f"{product.name} {product.specs[key]}")
+    if len(queries) < 3:
+        queries.append(f"{product.name} технические характеристики")
     missing = []
     for field in ("материал корпуса", "класс защиты", "межповерочный интервал", "комплект поставки"):
         if field not in product.specs:
